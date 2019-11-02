@@ -105,5 +105,30 @@ namespace Backend_API_UltraGym.Business
 
 
 
+        //REGISTRAR CLASE
+        public bool RegisterClass(int user, int classe)
+        {
+            //CREAMOS LA CONEXION A LA BASE DE DATOS
+            var Connect = Db_Connection.ConexionSQL();
+
+            //QUERY QUE SE EJECUTARA EN LA BASE DE DATOS
+            var Query = new SqlCommand("EXECUTE InscribedClass '" + classe + "','" +  user+ "';", Connect);
+
+            try
+            {
+                //ABRIMOS LA CONEXION
+                Connect.Open();
+                Query.ExecuteNonQuery();
+                Connect.Close();
+                return true;
+            }
+            catch (SqlException ex)
+            {
+                var exc = ex;
+                Connect.Close();
+                return false;
+            }
+        }
+
     }
 }

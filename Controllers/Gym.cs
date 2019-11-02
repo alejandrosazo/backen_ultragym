@@ -39,6 +39,25 @@ namespace Backend_API_UltraGym.Controllers
         }
 
 
+        //METODOS POST
+        // POST api/<controller>
+        [HttpPost("RegisterClass")]
+        public string RegisterClass(int user, int clase)
+        {
+            var Connection = new Gyms_Business();
+            bool result = Connection.RegisterClass(user, clase);
+            if (result == true)
+            {
+                return "Almacenado Correctamente";
+            }
+            else
+            {
+                return "Error al Amacenar";
+            }
+
+        }
+
+
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
