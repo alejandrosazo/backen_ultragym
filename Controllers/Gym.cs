@@ -59,6 +59,18 @@ namespace Backend_API_UltraGym.Controllers
 
 
 
+        [HttpGet("ReadClaseGym")]
+        public JsonResult ReadClaseGym(int idClase, int idUser)
+        {
+            ClassModel Clase = new ClassModel();
+
+            Clase = Gyms_Business.ReadClassGym(idClase, idUser);
+
+            return Json(Clase);
+        }
+
+
+
         // GET api/<controller>/5
         [HttpGet("{id}")]
         public string Get(int id)

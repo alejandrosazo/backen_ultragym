@@ -50,6 +50,28 @@ namespace Backend_API_UltraGym.Business
         }
 
 
+
+        public static ClassModel ReadClassGym(int idClas, int idUser)
+        {
+            string Query = "EXECUTE ReadClassUser '" + idUser + "','" + idClas + "';";
+
+            //CREAMOS UN ADAPTADOR PARA LA CONSULTA
+
+            var ResultSet = Db_Connection.ReaderDatabase(Query); ;
+            //INICIAMOS EL MODELO
+            ClassModel Clase = new ClassModel();
+
+            //LLENAMOS EL MODELO CON LOS DATOS EXTRAIDOS
+            Clase.Id_Class = int.Parse(ResultSet.Rows[0]["Id_UserClass"].ToString());
+           
+
+
+            return Clase;
+        }
+
+
+
+
         //LEER GIMNASIO SELECCIONADO
         public static Tuple<List<GymModel>, List<CoachModel>, List<ClassModel>> ReadOneGyms(int IdGym)
         {
