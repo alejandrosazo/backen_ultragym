@@ -106,13 +106,13 @@ namespace Backend_API_UltraGym.Business
 
 
         //REGISTRAR CLASE
-        public bool RegisterClass(int user, int classe)
+        public bool RegisterClass(ClassModel classe)
         {
             //CREAMOS LA CONEXION A LA BASE DE DATOS
             var Connect = Db_Connection.ConexionSQL();
 
             //QUERY QUE SE EJECUTARA EN LA BASE DE DATOS
-            var Query = new SqlCommand("EXECUTE InscribedClass '" + classe + "','" +  user+ "';", Connect);
+            var Query = new SqlCommand("EXECUTE InscribedClass '" + classe.Id_Class + "','" +  classe.Id_Coach_Class + "';", Connect);
 
             try
             {

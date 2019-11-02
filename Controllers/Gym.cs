@@ -42,10 +42,10 @@ namespace Backend_API_UltraGym.Controllers
         //METODOS POST
         // POST api/<controller>
         [HttpPost("RegisterClass")]
-        public string RegisterClass(int user, int clase)
+        public string RegisterClass([FromBody] ClassModel classe)
         {
             var Connection = new Gyms_Business();
-            bool result = Connection.RegisterClass(user, clase);
+            bool result = Connection.RegisterClass(classe);
             if (result == true)
             {
                 return "Almacenado Correctamente";
