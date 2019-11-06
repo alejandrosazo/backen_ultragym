@@ -134,7 +134,7 @@ namespace Backend_API_UltraGym.Business
             var Connect = Db_Connection.ConexionSQL();
 
             //QUERY QUE SE EJECUTARA EN LA BASE DE DATOS
-            var Query = new SqlCommand("EXECUTE InscribedClass '" + classe.Id_Class + "','" +  classe.Id_Coach_Class + "';", Connect);
+            var Query = new SqlCommand("EXECUTE InscribedClass '" + classe.Id_Class + "','" +  classe.Id_Coach_Class + "','" + classe.Class_Limit + "';", Connect);
 
             try
             {
