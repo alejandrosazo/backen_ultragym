@@ -60,11 +60,11 @@ namespace Backend_API_UltraGym.Controllers
 
 
         [HttpGet("ReadClaseGym")]
-        public JsonResult ReadClaseGym(int idClase, int idUser)
+        public JsonResult ReadClaseGym(int idClase, int idUser, int idGym)
         {
             ClassModel Clase = new ClassModel();
 
-            Clase = Gyms_Business.ReadClassGym(idClase, idUser);
+            Clase = Gyms_Business.ReadClassGym(idClase, idUser, idGym);
 
             return Json(Clase);
         }

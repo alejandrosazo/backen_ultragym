@@ -51,9 +51,9 @@ namespace Backend_API_UltraGym.Business
 
 
 
-        public static ClassModel ReadClassGym(int idClas, int idUser)
+        public static ClassModel ReadClassGym(int idClas, int idUser, int idGym)
         {
-            string Query = "EXECUTE ReadClassUser '" + idUser + "','" + idClas + "';";
+            string Query = "EXECUTE ReadClassUser '" + idUser + "','" + idClas + "','" + idGym + "';";
 
             //CREAMOS UN ADAPTADOR PARA LA CONSULTA
 
