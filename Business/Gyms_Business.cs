@@ -71,6 +71,47 @@ namespace Backend_API_UltraGym.Business
 
 
 
+        public static List<UserClassModel> ReadClassUserGym(int idUser)
+        {
+            var Connect = Db_Connection.ConexionSQL();
+            //ABRIMOS LA CONEXION
+            Connect.Open();
+
+            //QUERY QUE SE EJECUTARA EN LA BASE DE DATOS
+            var QueryC = new SqlCommand("EXECUTE ReadClassGymUser '" + idUser + "';", Connect);
+            //CREAMOS UN ADAPTADOR PARA LA CONSULTA
+
+            SqlDataReader ResultSet = QueryC.ExecuteReader(); ;
+            //INICIAMOS EL MODELO
+
+            List<UserClassModel> result = new List<UserClassModel>();
+           
+            while (ResultSet.Read())
+            {
+
+                UserClassModel UserClass = new UserClassModel();
+
+                //LLENAMOS EL MODELO CON LOS DATOS EXTRAIDOS
+                UserClass.Id_Class = int.Parse(ResultSet["Id_Class"].ToString());
+                UserClass.Id_Gym = int.Parse(ResultSet["Id_Gym"].ToString());
+                UserClass.Id_User = int.Parse(ResultSet["Id_User"].ToString());
+                UserClass.Id_Coach = int.Parse(ResultSet["Id_Coach"].ToString());
+                UserClass.Class_Name = ResultSet["Class_Name"].ToString();
+                UserClass.Class_Inscribed = int.Parse(ResultSet["Class_Inscribed"].ToString());
+                UserClass.Class_Hour = ResultSet["Class_Hour"].ToString();
+                UserClass.Coach_Name = ResultSet["Coach_Name"].ToString();
+                UserClass.Gym_Campus = ResultSet["Gym_Campus"].ToString();
+                UserClass.Gym_Address = ResultSet["Gym_Address"].ToString();
+                UserClass.Gym_Phone = ResultSet["Gym_Phone"].ToString();
+                
+                result.Add(UserClass);
+            }
+            Connect.Close();
+            return result;
+        }
+
+
+
 
         //LEER GIMNASIO SELECCIONADO
         public static Tuple<List<GymModel>, List<CoachModel>, List<ClassModel>> ReadOneGyms(int IdGym)
@@ -154,3 +195,4 @@ namespace Backend_API_UltraGym.Business
 
     }
 }
+

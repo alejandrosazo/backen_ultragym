@@ -38,6 +38,19 @@ namespace Backend_API_UltraGym.Controllers
             return Json((Gym, Coach, Class));
         }
 
+        // GET api/<controller>/5
+        [HttpGet("ReadClassUserGym")]
+        public JsonResult ReadClassUserGym(int IdUser)
+        {
+            var Values = Gyms_Business.ReadClassUserGym(IdUser);
+
+            List<UserClassModel> Gym = Values;
+            
+
+
+            return Json(Gym);
+        }
+
 
         //METODOS POST
         // POST api/<controller>

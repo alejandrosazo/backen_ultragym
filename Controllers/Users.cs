@@ -28,6 +28,27 @@ namespace Backend_API_UltraGym.Controllers
 
 
 
+        //METODOS POST
+        // POST api/<controller>
+        [HttpDelete("DeleteClass")]
+        public string DeleteClass(int idClass, int idGym, int idUser)
+        {
+            var Connection = new Users_Business();
+            bool result = Connection.DeleteClass(idClass, idGym, idUser);
+            if (result == true)
+            {
+                return "Eliminado Correctamente";
+            }
+            else
+            {
+                return "Error al Eliminar";
+            }
+
+        }
+
+
+
+
         // GET api/<controller>/5
         [HttpGet("{id}")]
         public string Get(int id)
